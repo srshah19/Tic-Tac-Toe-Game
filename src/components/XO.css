@@ -1,0 +1,23 @@
+.parent {
+    width: 100%;
+    display: inline-block;
+}
+
+.cell {
+    border: 1px solid black;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    float: left;
+    padding: 10px;
+}
+
+td{
+    border: 1px solid black;
+}
+
+.btn-primary{
+    padding: 5px;
+    background-color: cornflowerblue;
+    color: white;
+}
