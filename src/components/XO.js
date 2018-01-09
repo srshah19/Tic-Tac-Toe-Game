@@ -143,6 +143,25 @@ class XO extends Component {
   }
   
   render() {
+    let table;
+    if(this.props.scoreboard){
+      table = (
+         <table>
+            <thead>
+            <tr>
+              <td>O Wins</td>
+              <td>X Wins</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>{this.state.OWins}</td>
+              <td>{this.state.XWins}</td>
+            </tr>
+            </tbody>
+          </table>
+      )
+    }
     if (this.state.ready) {
       return (
         <div>
@@ -161,20 +180,7 @@ class XO extends Component {
               );
             }.bind(this))}
           </div>
-          <table>
-            <thead>
-            <tr>
-              <td>O Wins</td>
-              <td>X Wins</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>{this.state.OWins}</td>
-              <td>{this.state.XWins}</td>
-            </tr>
-            </tbody>
-          </table>
+          {table}
           <button className={"btn-primary"} onClick={this.hardReset.bind(this)}>Reset Game</button>
         </div>
       )

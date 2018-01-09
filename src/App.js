@@ -29,7 +29,7 @@ class App extends Component {
           <input type={"number"} min={3} value={this.state.size} max={10} id={"size"} onChange={this.changeSize.bind(this)}
                  placeholder={"select desired matrix size"}/>
         </div>
-        <XO size={this.state.size}/>
+        <XO size={this.state.size} scoreboard={true}/>
       </div>
     );
   }

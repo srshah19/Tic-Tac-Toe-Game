@@ -31,4 +31,8 @@ td {
     padding: 5px;
     background-color: cornflowerblue;
     color: white;
+    display: block;
+    clear: both;
+    width: auto;
+    margin: 0 auto;
 }
