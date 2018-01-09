@@ -14,10 +14,19 @@ class XO extends Component {
   constructor(props) {
     super(props);
     this.state = initialState;
+    this.state.size = props.size || 3;//If no size props is given, always default to 3x3
   }
   
   componentDidMount() {
     this.init();
+  }
+  
+  componentWillReceiveProps(nextProps){
+    if(parseInt(nextProps.size) !== this.props.size){
+      this.setState({size: parseInt(nextProps.size)},() => {
+            this.init();
+        });
+    }
   }
   
   // Initialize the xo board
@@ -28,8 +37,8 @@ class XO extends Component {
   }
   
   createBoard() {
-    let boardSize = this.props.size || 3; //If no size props is given, always default to 3x3
-    this.board = createNewBoard(boardSize)
+    let boardSize = this.state.size;
+    this.board = createNewBoard(boardSize);
     this.setState({
       ready: true,
       player: 'X'
