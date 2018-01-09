@@ -137,19 +137,21 @@ class XO extends Component {
     if (this.state.ready) {
       return (
         <div>
-          {this.board.map(function (arr, idx) {
-            return (
-              <div className="parent" key={idx}>
-                {arr.map(function (v, i) {
-                  let cellIndex = `${idx}_${i}`;
-                  return (
-                    <div className={'cell'} key={i} onClick={this._move.bind(this, cellIndex)}
-                         value={v} data-idx={cellIndex}>{v}</div>
-                  );
-                }.bind(this))}
-              </div>
-            );
-          }.bind(this))}
+          <div className={"matrix"}>
+            {this.board.map(function (arr, idx) {
+              return (
+                <div className="parent" key={idx}>
+                  {arr.map(function (v, i) {
+                    let cellIndex = `${idx}_${i}`;
+                    return (
+                      <div className={'cell'} key={i} onClick={this._move.bind(this, cellIndex)}
+                           value={v} data-idx={cellIndex}>{v}</div>
+                    );
+                  }.bind(this))}
+                </div>
+              );
+            }.bind(this))}
+          </div>
           <table>
             <thead>
             <tr>
