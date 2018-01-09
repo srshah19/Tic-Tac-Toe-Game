@@ -18,9 +18,14 @@ class XO extends Component {
   }
   
   componentDidMount() {
+    // On successful component mount, we initialize the game
     this.init();
   }
   
+  /*
+  * Component will receive new props when user selects new game board size.
+  * We check to see if the new size is same as old, if not we re-initialize the game with init
+  * */
   componentWillReceiveProps(nextProps){
     if(parseInt(nextProps.size) !== this.props.size){
       this.setState({size: parseInt(nextProps.size)},() => {
@@ -38,6 +43,8 @@ class XO extends Component {
   
   createBoard() {
     let boardSize = this.state.size;
+    
+    // createNewBoard is a utility function that generates a new board with desired size
     this.board = createNewBoard(boardSize);
     this.setState({
       ready: true,
@@ -46,10 +53,13 @@ class XO extends Component {
   }
   
   _move(idx) {
+    // We receive the idx from the cell in the form of row_col. Split at _ to get corresponding geo coordinates
     let indexes = idx.split('_');
     let geo = indexes.map(function (a) {
       return parseInt(a)
     });
+    
+    // Check to see if the board value is null. Only then allow value to be entered. Else do nothing
     if (!this.board[geo[0]][geo[1]]) {
       this.board[geo[0]][geo[1]] = this.state.player;
       if (this.gameOver(geo[0], geo[1])) {
@@ -112,7 +122,7 @@ class XO extends Component {
       count = 0;
     }
     
-    // Diagonal Check
+    //Left Diagonal Check
     for (j = 0, i = 0; j < length; j++, i++) {
       if (arr[i][j] === this.state.player) {
         count++
@@ -125,6 +135,7 @@ class XO extends Component {
       count = 0;
     }
     
+    // Right diagonal check
     for (i = 0, j = length - 1; i < length; i++, j--) {
       if (arr[i][j] === this.state.player) {
         count++

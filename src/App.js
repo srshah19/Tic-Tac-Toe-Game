@@ -26,10 +26,13 @@ class App extends Component {
         </header>
         <div style={{margin: '10px'}}>
           <label htmlFor={"size"}>Select the game board size</label>
+          {/*We can let the user choose what type of board size they want and setstate accordingly*/}
           <input type={"number"} min={3} value={this.state.size} max={10} id={"size"} onChange={this.changeSize.bind(this)}
                  placeholder={"select desired matrix size"}/>
         </div>
-        <XO size={this.state.size} scoreboard={true}/>
+        
+        {/*Component for the game */}
+        <XO size={this.state.size} scoreboard={true} />
       </div>
     );
   }
